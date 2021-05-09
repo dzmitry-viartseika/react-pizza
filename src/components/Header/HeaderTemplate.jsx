@@ -1,6 +1,6 @@
 import React from 'react';
 import logoSvg from "../../assets/img/pizza-logo.svg";
-import ButtonTemplate from '../Elements/ButtonTemplate';
+import { ButtonTemplate } from "../index";
 
 const HeaderTemplate = () => {
 
