@@ -5,7 +5,7 @@ const CategoriesItem = ({ name, onClick, active }) => {
         <li
             onClick={onClick}
             className={
-                active ? 'active' : false
+                active ? 'active' : ''
             }
         >
             { name }

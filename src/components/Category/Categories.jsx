@@ -10,7 +10,7 @@ const Categories = ({ items }) => {
         <div className="categories">
             <ul>
                 <li
-                    className={category === null ? 'active' : false}
+                    className={category === null ? 'active' : ''}
                     onClick={() => activeCategory(null)}
                 >
                     Все

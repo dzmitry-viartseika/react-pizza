@@ -2,6 +2,7 @@ import React from 'react';
 import { Categories, SortPopup, PizzaList } from "../components";
 
 const Home = ({ items }) => {
+
     return (
         <div className="wrapper">
             <div className="content">
@@ -11,7 +12,11 @@ const Home = ({ items }) => {
                             ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
                         }/>
                         <SortPopup sortList={
-                            ['популярности', 'цене', 'алфавиту']
+                            [
+                                {name: 'популярности', type: 'popular'},
+                                {name: 'цене', type: 'price'},
+                                {name: 'алфавиту', type: 'abc'}
+                            ]
                         }/>
                     </div>
                     <h2 className="content__title">Все пиццы</h2>

@@ -50,10 +50,10 @@ const SortPopup = ({ sortList }) => {
                                             <li
                                                 key={`${item}_${index}`}
                                                 className={
-                                                    activeItem === item ? 'active' : ''
+                                                    activeItem === item.name ? 'active' : ''
                                                 }
-                                                onClick={() => selectSortItem(item)}
-                                            >{ item }</li>
+                                                onClick={() => selectSortItem(item.name)}
+                                            >{ item.name }</li>
                                         )
                                     })
                                 }
