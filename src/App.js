@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPizzas } from './redux/actions/pizzas';
 
 function App() {
-    // const [pizzasList, setPizzasList] = useState([]);
     const pizzasList = useSelector(state => state.pizza.pizzas);
-    console.log('pizzasList', pizzasList)
     const dispatch = useDispatch();
 
     const getPizzas = async () => {

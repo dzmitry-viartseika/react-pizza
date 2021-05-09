@@ -1,4 +1,5 @@
 import {
+    SET_CATEGORY,
     SET_SORT_BY,
 } from '../../constants/types';
 
@@ -15,6 +16,11 @@ export const filtersReducers = (state = initialState, action) => {
             return {
                 ...state,
                 sortBy: action.payload
+            }
+        case SET_CATEGORY:
+            return {
+                ...state,
+                category: action.payload
             }
     }
     return state;
