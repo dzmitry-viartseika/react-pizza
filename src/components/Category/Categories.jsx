@@ -8,7 +8,6 @@ const Categories = ({ items }) => {
     }
     return (
         <div className="categories">
-            category={ category }
             <ul>
                 <li
                     className={category === null ? 'active' : false}
