@@ -1,7 +1,11 @@
 import React from 'react';
 import { Categories, SortPopup, PizzaList } from "../components";
+import { useDispatch } from "react-redux";
 
 const Home = ({ items }) => {
+    const dispatch = useDispatch();
+
+
 
     return (
         <div className="wrapper">
