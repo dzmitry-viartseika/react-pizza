@@ -1,18 +1,11 @@
 import {
-    SET_SORT_BY,
-    SET_CATEGORY,
+    ADD_TO_CART,
 } from '../../constants/types'
 
-export function setSortBy(type) {
+export function addPizzaToCart(pizza) {
     return {
-        type: SET_SORT_BY,
-        payload: type
+        type: ADD_TO_CART,
+        items: pizza
     }
 }
 
-export function setCategory(catIndex) {
-    return {
-        type: SET_CATEGORY,
-        payload: catIndex
-    }
-}

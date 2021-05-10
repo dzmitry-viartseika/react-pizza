@@ -1,8 +1,13 @@
 import React from 'react';
 import logoSvg from "../../assets/img/pizza-logo.svg";
 import { ButtonTemplate } from "../index";
+import {useSelector} from "react-redux";
 
 const HeaderTemplate = () => {
+
+    const { totalPrice, totalCount } = useSelector(state => state.cart);
+
+    console.log('123')
 
     const clickHandler = () => {
         console.log('clickHandler')
@@ -22,7 +27,7 @@ const HeaderTemplate = () => {
                         clickHandler={clickHandler}
                         className='button--cart'
                     >
-                        <span>520 ₽</span>
+                        <span>{ totalPrice } ₽</span>
                         <div className="button__delimiter"></div>
                         <svg
                             width="18"
@@ -53,7 +58,9 @@ const HeaderTemplate = () => {
                                 strokeLinejoin="round"
                             />
                         </svg>
-                        <span>3</span>
+                        <span>
+                            { totalCount }
+                        </span>
                     </ButtonTemplate>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { CategoriesItem } from "../index";
 import PropTypes from "prop-types";
-import PizzaList from "../Pizza/PizzaList";
 
 const Categories = React.memo(({ items, onSelectCategory, activeCategoryIndex }) => {
     const activeCategory = (index) => {

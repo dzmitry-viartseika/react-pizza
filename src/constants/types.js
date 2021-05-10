@@ -16,3 +16,7 @@ export const SET_CATEGORY = 'SET_CATEGORY';
 // pizzas
 export const SET_PIZZAS = 'SET_PIZZAS';
 export const SET_LOADER = 'SET_LOADER';
+// cart
+export const SET_TOTAL_PRICE = 'SET_TOTAL_PRICE';
+export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
+export const ADD_TO_CART = 'ADD_TO_CART';
