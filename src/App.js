@@ -3,25 +3,16 @@ import React, { useEffect, useState} from 'react';
 import HeaderTemplate  from './components/Header/HeaderTemplate';
 import { Home, Cart } from './pages';
 import { Route } from 'react-router-dom';
-import pizzaApi from './api/pizzaApi/api';
 import { useDispatch, useSelector } from "react-redux";
-import { setPizzas } from './redux/actions/pizzas';
+import { fetchPizzas } from './redux/actions/pizzas';
 
 function App() {
     const pizzasList = useSelector(state => state.pizza.pizzas);
     const dispatch = useDispatch();
 
-    const getPizzas = async () => {
-        try {
-            const { data } = await pizzaApi.getPizzasList();
-            dispatch(setPizzas(data));
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
     useEffect( () => {
-        getPizzas()
+        // fetchPizzas(dispatch)
+        dispatch(fetchPizzas())
     }, []);
   return (
     <div className="wrapper">
