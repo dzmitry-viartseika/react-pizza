@@ -1,23 +1,26 @@
 import {
-   SET_PIZZAS,
+    SET_LOADER,
+    SET_PIZZAS,
 } from '../../constants/types';
 import pizzaApi from "../../api/pizzaApi/api";
 
-// export async function fetchPizzas(dispatch) {
-//     try {
-//         const { data } = await pizzaApi.getPizzasList();
-//         dispatch(setPizzas(data));
-//     } catch (e) {
-//         console.error(e)
-//     }
-// }
-
-export const fetchPizzas = () => async (dispatch) => {
+export const fetchPizzas = (sortBy, category) => async (dispatch) => {
     try {
-        const { data } = await pizzaApi.getPizzasList();
+        dispatch({
+            type: SET_LOADER,
+            payload: false
+        })
+        const { data } = await pizzaApi.getPizzasList(sortBy, category);
         dispatch(setPizzas(data));
     } catch (e) {
         console.error(e)
+    }
+}
+
+export function setLoader(data) {
+    return {
+        type: SET_LOADER,
+        payload: data
     }
 }
 

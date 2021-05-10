@@ -13,6 +13,7 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes}) => {
     const onSelectSize = (size) => {
         setActiveSize(size);
     }
+
     return (
         <div className="pizza-block">
             <img

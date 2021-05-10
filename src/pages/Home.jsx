@@ -1,26 +1,33 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import { Categories, SortPopup, PizzaList } from "../components";
-import { useDispatch } from "react-redux";
-import {setCategory} from "../redux/actions/filters";
+import {useDispatch, useSelector} from "react-redux";
+import {setCategory, setSortBy} from "../redux/actions/filters";
+import {fetchPizzas} from "../redux/actions/pizzas";
 
 const categoryList = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
 const sortList = [
     {name: 'популярности', type: 'popular'},
     {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'abc'}
+    {name: 'алфавиту', type: 'name'}
 ]
 
-const Home = ({ items }) => {
+const Home = () => {
     const dispatch = useDispatch();
+    const pizzasList = useSelector(state => state.pizza.pizzas);
+    const { category, sortBy } = useSelector(state => state.filter);
+
+    useEffect( () => {
+            dispatch(fetchPizzas(sortBy, category))
+    }, [category, sortBy]);
 
     const onSelectCategory = useCallback((index) => {
         dispatch(setCategory(index))
     }, []);
 
-    // const onSelectSort = useCallback((index) => {
-    //     dispatch(setCategory(index))
-    // }, [])
+    const onSelectSort = useCallback((index) => {
+        dispatch(setSortBy(index))
+    }, [])
 
     return (
         <div className="wrapper">
@@ -29,11 +36,16 @@ const Home = ({ items }) => {
                     <div className="content__top">
                         <Categories items={categoryList}
                                     onSelectCategory={onSelectCategory}
+                                    activeCategoryIndex={category}
                         />
-                        <SortPopup sortList={sortList}/>
+                        <SortPopup
+                            sortList={sortList}
+                            activeSortIndex={sortBy}
+                            onSelectSort={onSelectSort}
+                        />
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
-                    <PizzaList items={items}/>
+                    <PizzaList items={pizzasList} />
                 </div>
             </div>
         </div>

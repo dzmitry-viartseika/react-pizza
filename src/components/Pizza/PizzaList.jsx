@@ -1,20 +1,21 @@
 import React from 'react';
 import { PizzaItem } from "../index";
 import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
+import PizzaPlaceholder from "./PizzaPlaceholder";
 
 const PizzaList = ({items}) => {
+    const isLoaded = useSelector(state => state.pizza.isLoaded);
     return (
         <div className="content__items">
             {
-                items && items.map((pizza) => {
-                    return (
+                isLoaded
+                    ? items.map((pizza) =>
                         <PizzaItem
                             key={pizza.id}
                             {...pizza}
-                        />
-                    )
-                })
-            }
+                        />)
+                    : Array(12).fill(0).map((_, index) => <PizzaPlaceholder key={index} /> )}
         </div>
     )
 }
@@ -22,5 +23,4 @@ const PizzaList = ({items}) => {
 PizzaList.propTypes  = {
     items: PropTypes.array
 }
-
 export default PizzaList;
