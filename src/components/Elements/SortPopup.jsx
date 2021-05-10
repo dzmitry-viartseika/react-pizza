@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 
-const SortPopup = ({ sortList }) => {
+const SortPopup = React.memo(({ sortList }) => {
     const [activeItem, setActiveItem] = useState('популярности');
     const [isVisiblePopup, setVisiblePopup] = useState(false);
     const selectSortItem = (name) => {
@@ -64,6 +64,6 @@ const SortPopup = ({ sortList }) => {
             </div>
         </OutsideClickHandler>
     )
-}
+})
 
 export default SortPopup;

@@ -6,6 +6,6 @@ export default {
         const instCred = axios.create({
             baseURL: CURRENT_SERVER,
         });
-        return instCred.get('db.json');
+        return instCred.get('/pizzas');
     },
 };

@@ -13,9 +13,8 @@ function App() {
 
     const getPizzas = async () => {
         try {
-            const response = await pizzaApi.getPizzasList();
-            const { data: { pizzas: pizzasList } } = response;
-            dispatch(setPizzas(pizzasList));
+            const { data } = await pizzaApi.getPizzasList();
+            dispatch(setPizzas(data));
         } catch (e) {
             console.error(e)
         }
