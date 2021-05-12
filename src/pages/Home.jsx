@@ -1,8 +1,9 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { Categories, SortPopup, PizzaList } from "../components";
-import {useDispatch, useSelector} from "react-redux";
-import {setCategory, setSortBy} from "../redux/actions/filters";
-import {fetchPizzas} from "../redux/actions/pizzas";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory, setSortBy } from "../redux/actions/filters";
+import { fetchPizzas } from "../redux/actions/pizzas";
+import { addPizzaToCart } from '../redux/actions/cart';
 
 const categoryList = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
@@ -45,7 +46,9 @@ const Home = () => {
                         />
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
-                    <PizzaList items={pizzasList} />
+                    <PizzaList
+                        items={pizzasList}
+                    />
                 </div>
             </div>
         </div>

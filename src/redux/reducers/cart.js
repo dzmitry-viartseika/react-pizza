@@ -21,10 +21,13 @@ const cartReducer = (state = initialState, action) => {
         case ADD_TO_CART:
             return {
                 ...state,
-                [action.payload.id]: [
-                    ...state.items,
-                    action.payload
-                ]
+                items: {
+                   ...state.items,
+                    [action.payload.id]: !state.items[action.payload.id] ? [action.payload] : [
+                        [...state.items[action.payload.id],
+                            action.payload]
+                    ]
+                }
             }
     }
     return state;

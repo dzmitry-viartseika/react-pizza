@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 import PizzaPlaceholder from "./PizzaPlaceholder";
 
-const PizzaList = ({items}) => {
+const PizzaList = ({items, addToCart}) => {
     const isLoaded = useSelector(state => state.pizza.isLoaded);
     return (
         <div className="content__items">
@@ -21,6 +21,7 @@ const PizzaList = ({items}) => {
 }
 
 PizzaList.propTypes  = {
-    items: PropTypes.array
+    items: PropTypes.array,
+    addToCart: PropTypes.func
 }
 export default PizzaList;

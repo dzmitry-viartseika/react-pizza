@@ -5,7 +5,7 @@ import {
 export function addPizzaToCart(pizza) {
     return {
         type: ADD_TO_CART,
-        items: pizza
+        payload: pizza
     }
 }
 

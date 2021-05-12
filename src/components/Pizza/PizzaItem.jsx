@@ -1,17 +1,37 @@
 import React, { useState } from 'react';
 import classNames from "classnames";
 import PropTypes from 'prop-types';
+import {ButtonTemplate} from "../index";
+import {addPizzaToCart} from "../../redux/actions/cart";
+import {useDispatch} from "react-redux";
 
-const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes}) => {
+const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id}) => {
+    const dispatch = useDispatch();
     const typeNames = ['тонкое', 'традиционное'];
     const avaliableSizes = [26, 30, 40];
-    const [activeType, setActiveType] = useState(types[0]);
-    const [activeSize, setActiveSize] = useState(sizes[0]);
+
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
     const onSelectType = (index) => {
         setActiveType(index);
     }
     const onSelectSize = (size) => {
         setActiveSize(size);
+        console.log('activeSize', activeSize)
+    }
+
+    const addToCart = (id, imageUrl, name, price) => {
+        console.log(id, imageUrl, name, price)
+        const pizza = {
+            id,
+            name,
+            imageUrl,
+            price,
+            size: avaliableSizes[activeSize],
+            type: typeNames[activeType],
+        }
+        console.log('pizza', pizza)
+        dispatch(addPizzaToCart(pizza))
     }
 
     return (
@@ -64,7 +84,11 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes}) => {
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от { price } ₽</div>
-                <div className="button button--outline button--add">
+                <ButtonTemplate
+                    className="button--add"
+                    outline
+                    onClick={() => addToCart(id, imageUrl, name, price)}
+                >
                     <svg
                         width="12"
                         height="12"
@@ -79,7 +103,7 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes}) => {
                     </svg>
                     <span>Добавить</span>
                     <i>2</i>
-                </div>
+                </ButtonTemplate>
             </div>
         </div>
     )
@@ -91,6 +115,7 @@ PizzaItem.propTypes  = {
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number),
     sizes: PropTypes.arrayOf(PropTypes.number),
+    addToCart: PropTypes.func
 }
 
 PizzaItem.defaultProps = {
