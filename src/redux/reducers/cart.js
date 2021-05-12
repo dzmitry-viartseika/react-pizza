@@ -21,15 +21,16 @@ const cartReducer = (state = initialState, action) => {
         case ADD_TO_CART:
             const newItems = {
                 ...state.items,
-                [action.payload.id]: !state.items[action.payload.id] ? [action.payload] : [
-                    [...state.items[action.payload.id],
-                        action.payload]
-                ]
+                [action.payload.id]: !state.items[action.payload.id] ? [action.payload]
+                    : [...state.items[action.payload.id], action.payload]
             }
+            const allPizzas = [].concat.apply([], Object.values(newItems));
+            const totalPrice = allPizzas.reduce((sum, obj) => obj.price + sum, 0);
             return {
                 ...state,
                 items: newItems,
-                totalCount: [].concat.apply([], Object.values(items)).length,
+                totalCount: allPizzas.length,
+                totalPrice,
             }
     }
     return state;

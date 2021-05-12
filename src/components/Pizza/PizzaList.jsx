@@ -6,6 +6,7 @@ import PizzaPlaceholder from "./PizzaPlaceholder";
 
 const PizzaList = ({items, addToCart}) => {
     const isLoaded = useSelector(state => state.pizza.isLoaded);
+    const cartItems = useSelector((state) => state.cart.items);
     return (
         <div className="content__items">
             {
@@ -14,6 +15,7 @@ const PizzaList = ({items, addToCart}) => {
                         <PizzaItem
                             key={pizza.id}
                             {...pizza}
+                            addedPizza={cartItems[pizza.id] && cartItems[pizza.id].length || 0}
                         />)
                     : Array(12).fill(0).map((_, index) => <PizzaPlaceholder key={index} /> )}
         </div>
@@ -22,6 +24,6 @@ const PizzaList = ({items, addToCart}) => {
 
 PizzaList.propTypes  = {
     items: PropTypes.array,
-    addToCart: PropTypes.func
+    addToCart: PropTypes.func,
 }
 export default PizzaList;

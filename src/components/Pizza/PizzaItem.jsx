@@ -3,12 +3,13 @@ import classNames from "classnames";
 import PropTypes from 'prop-types';
 import {ButtonTemplate} from "../index";
 import {addPizzaToCart} from "../../redux/actions/cart";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id}) => {
+const typeNames = ['тонкое', 'традиционное'];
+const avaliableSizes = [26, 30, 40];
+
+const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id, addedPizza}) => {
     const dispatch = useDispatch();
-    const typeNames = ['тонкое', 'традиционное'];
-    const avaliableSizes = [26, 30, 40];
 
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
@@ -17,7 +18,6 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id}) 
     }
     const onSelectSize = (size) => {
         setActiveSize(size);
-        console.log('activeSize', activeSize)
     }
 
     const addToCart = (id, imageUrl, name, price) => {
@@ -30,7 +30,6 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id}) 
             size: avaliableSizes[activeSize],
             type: typeNames[activeType],
         }
-        console.log('pizza', pizza)
         dispatch(addPizzaToCart(pizza))
     }
 
@@ -102,7 +101,11 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id}) 
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>2</i>
+                    {
+                        addedPizza ? <i>
+                            { addedPizza }
+                        </i> : null
+                    }
                 </ButtonTemplate>
             </div>
         </div>
@@ -115,7 +118,8 @@ PizzaItem.propTypes  = {
     price: PropTypes.number.isRequired,
     types: PropTypes.arrayOf(PropTypes.number),
     sizes: PropTypes.arrayOf(PropTypes.number),
-    addToCart: PropTypes.func
+    addToCart: PropTypes.func,
+    addedPizza: PropTypes.number,
 }
 
 PizzaItem.defaultProps = {
