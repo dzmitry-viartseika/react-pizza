@@ -21,7 +21,6 @@ const PizzaItem = ({imageUrl, name, price, category, rating, types, sizes, id, a
     }
 
     const addToCart = (id, imageUrl, name, price) => {
-        console.log(id, imageUrl, name, price)
         const pizza = {
             id,
             name,

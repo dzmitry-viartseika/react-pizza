@@ -20,3 +20,4 @@ export const SET_LOADER = 'SET_LOADER';
 export const SET_TOTAL_PRICE = 'SET_TOTAL_PRICE';
 export const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const CLEAR_CART = 'CLEAR_CART';

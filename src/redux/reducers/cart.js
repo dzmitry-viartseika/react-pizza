@@ -1,4 +1,4 @@
-import {SET_TOTAL_PRICE, SET_TOTAL_COUNT, ADD_TO_CART} from "../../constants/types";
+import {SET_TOTAL_PRICE, SET_TOTAL_COUNT, ADD_TO_CART, CLEAR_CART} from "../../constants/types";
 
 const initialState = {
     totalPrice: 0,
@@ -14,6 +14,12 @@ const cartReducer = (state = initialState, action) => {
             return {
                 ...state,
                 totalPrice: action.payload
+            }
+        case CLEAR_CART:
+            return {
+                items: {},
+                totalPrice: 0,
+                totalCount: 0,
             }
         case SET_TOTAL_COUNT:
             return {

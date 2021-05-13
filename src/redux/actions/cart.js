@@ -1,5 +1,6 @@
 import {
     ADD_TO_CART,
+    CLEAR_CART,
 } from '../../constants/types'
 
 export function addPizzaToCart(pizza) {
@@ -8,4 +9,8 @@ export function addPizzaToCart(pizza) {
         payload: pizza
     }
 }
+
+export const clearCart = () => ({
+        type: CLEAR_CART,
+})
 
