@@ -1,9 +1,17 @@
 import React from 'react';
 import {removeCartItem} from "../../redux/actions/cart";
 
-const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRemoveItem }) => {
+const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRemoveItem, onPlusItem, onMinusItem }) => {
     const handleRemoveClick = () => {
         onRemoveItem(id);
+    }
+
+    const handlePlusClick = () => {
+        onPlusItem(id);
+    }
+
+    const handleMinusClick = () => {
+        onMinusItem(id);
     }
     return (
         <div className="cart__item">
@@ -20,7 +28,9 @@ const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRe
             </div>
             <div className="cart__item-count">
                 <div
-                    className="button button--outline button--circle cart__item-count-minus">
+                    className="button button--outline button--circle cart__item-count-minus"
+                    onClick={handleMinusClick}
+                >
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -34,7 +44,9 @@ const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRe
                 </div>
                 <b>{ totalCount }</b>
                 <div
-                    className="button button--outline button--circle cart__item-count-plus">
+                    className="button button--outline button--circle cart__item-count-plus"
+                    onClick={handlePlusClick}
+                >
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
