@@ -3,14 +3,8 @@ import { Categories, SortPopup, PizzaList } from "../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory, setSortBy } from "../redux/actions/filters";
 import { fetchPizzas } from "../redux/actions/pizzas";
-
-const categoryList = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-
-const sortList = [
-    {name: 'популярности', type: 'popular'},
-    {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'name'}
-]
+import sortList  from '../constants/sortList'
+import categoryList  from '../constants/categoryList'
 
 const Home = () => {
     const dispatch = useDispatch();
