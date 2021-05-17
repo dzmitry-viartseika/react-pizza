@@ -1,5 +1,4 @@
 import React from 'react';
-import {removeCartItem} from "../../redux/actions/cart";
 
 const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRemoveItem, onPlusItem, onMinusItem }) => {
     const handleRemoveClick = () => {

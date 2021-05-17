@@ -8,9 +8,6 @@ const HeaderTemplate = () => {
 
     const { totalPrice, totalCount } = useSelector(state => state.cart);
 
-    const clickHandler = () => {
-        console.log('clickHandler')
-    }
     return (
         <div className="header">
             <div className="container">
@@ -26,7 +23,6 @@ const HeaderTemplate = () => {
                 <div className="header__cart">
                     <Link to={'/cart'}>
                         <ButtonTemplate
-                            clickHandler={clickHandler}
                             className='button--cart'
                         >
                             <span>{ totalPrice } ₽</span>

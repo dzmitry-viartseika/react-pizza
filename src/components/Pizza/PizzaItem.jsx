@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from 'prop-types';
 import {ButtonTemplate} from "../index";
 import {addPizzaToCart} from "../../redux/actions/cart";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 
 const typeNames = ['тонкое', 'традиционное'];
 const avaliableSizes = [26, 30, 40];
