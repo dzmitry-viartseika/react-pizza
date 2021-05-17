@@ -1,4 +1,4 @@
-import {SET_TOTAL_PRICE, SET_TOTAL_COUNT, ADD_TO_CART, CLEAR_CART} from "../../constants/types";
+import {SET_TOTAL_PRICE, SET_TOTAL_COUNT, ADD_TO_CART, CLEAR_CART, REMOVE_CART_ITEM} from "../../constants/types";
 
 const initialState = {
     totalPrice: 0,
@@ -20,6 +20,19 @@ const cartReducer = (state = initialState, action) => {
                 items: {},
                 totalPrice: 0,
                 totalCount: 0,
+            }
+        case REMOVE_CART_ITEM:
+            const newObj = {
+                ...state.items
+            }
+            const currentTotalPrice = newObj[action.payload].totalPrice;
+            const currentTotalCount = newObj[action.payload].items.length;
+            delete newObj[action.payload];
+            return {
+                ...state,
+                items: newObj,
+                totalPrice: state.totalPrice - currentTotalPrice,
+                totalCount: state.totalCount - currentTotalCount,
             }
         case SET_TOTAL_COUNT:
             return {

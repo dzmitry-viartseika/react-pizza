@@ -1,6 +1,10 @@
 import React from 'react';
+import {removeCartItem} from "../../redux/actions/cart";
 
-const CartItem = ({ name, type, size, imageUrl, totalPrice, totalCount }) => {
+const CartItem = ({ id, name, type, size, imageUrl, totalPrice, totalCount, onRemoveItem }) => {
+    const handleRemoveClick = () => {
+        onRemoveItem(id);
+    }
     return (
         <div className="cart__item">
             <div className="cart__item-img">
@@ -46,7 +50,9 @@ const CartItem = ({ name, type, size, imageUrl, totalPrice, totalCount }) => {
             <div className="cart__item-price">
                 <b>{ totalPrice } ₽</b>
             </div>
-            <div className="cart__item-remove">
+            <div className="cart__item-remove"
+                 onClick={handleRemoveClick}
+            >
                 <div className="button button--outline button--circle">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
